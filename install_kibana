@@ -1,0 +1,17 @@
+#!/bin/bash 
+
+# add repo 
+cat <<EOF > /etc/yum.repos.d/kibana.repo
+[kibana-4.4]
+name=Kibana repository for 4.4.x packages
+baseurl=http://packages.elastic.co/kibana/4.4/centos
+gpgcheck=1
+gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+EOF
+
+# yum install 
+yum install kibana -y 
+
+# optionally install shield plugin 
+/opt/kibana/bin/kibana plugin --install kibana/shield/2.2.1
