@@ -1,0 +1,4 @@
+#!/bin/bash
+
+curl -L -O https://download.elastic.co/beats/topbeat/topbeat-1.2.3-x86_64.rpm
+sudo rpm -vi topbeat-1.2.3-x86_64.rpm
