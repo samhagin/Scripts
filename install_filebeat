@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# download rpm
+curl -L -O https://download.elastic.co/beats/filebeat/filebeat-1.2.1-x86_64.rpm
+
+# install rpm
+rpm -vi filebeat-1.2.1-x86_64.rpm
