@@ -1,0 +1,107 @@
+set mongos to {"host1, "host2" }
+
+set configs to { "sdad1", "adsdw" }
+
+set primaries to { "testhost" }
+
+set secondaries to { "somehost", "anotherhost" }
+
+	set n to count of mongos
+	set m to count of configs
+	set o to count of primaries
+	set p to count of secondaries
+
+tell application "iTerm"
+	create window with default profile
+	
+	# split horizonatally
+	tell current session of current window
+		repeat n - 1 times
+			split horizontally with default profile
+		end repeat
+	end tell
+	
+	
+	# login to mongos
+	repeat with i from 1 to n
+		# next panel
+		tell application "System Events" to keystroke "]" using command down
+		delay 1
+		tell current session of current window
+			set shell to (item i of mongos)
+			write text "c -p <port> " & shell
+		end tell
+	end repeat
+	
+	# create tab for configs
+	tell current window
+		create tab with default profile
+	end tell
+	
+	# split horizonatally
+	tell current session of current window
+		repeat m - 1 times
+			split horizontally with default profile
+		end repeat
+	end tell
+	
+	# login to configs
+	repeat with i from 1 to m
+		# next panel
+		tell application "System Events" to keystroke "]" using command down
+		delay 1
+		tell current session of current window
+			set shell to (item i of configs)
+			write text "c " & shell
+		end tell
+	end repeat
+	
+	
+	# primaries
+	tell current window
+		create tab with default profile
+	end tell
+	
+	# split horizonatally
+	tell current session of current window
+		repeat o - 1 times
+			split horizontally with default profile
+		end repeat
+	end tell
+	
+	# login to primaries
+	repeat with i from 1 to o
+		# next panel
+		tell application "System Events" to keystroke "]" using command down
+		delay 1
+		tell current session of current window
+			set shell to (item i of primaries)
+			write text "c " & shell
+		end tell
+	end repeat
+	
+	
+	# secondaries
+	tell current window
+		create tab with default profile
+	end tell
+	
+	# split horizonatally
+	tell current session of current window
+		repeat p - 1 times
+			split horizontally with default profile
+		end repeat
+	end tell
+	
+	# login to primaries
+	repeat with i from 1 to p
+		# next panel
+		tell application "System Events" to keystroke "]" using command down
+		delay 1
+		tell current session of current window
+			set shell to (item i of secondaries)
+			write text "c " & shell
+		end tell
+	end repeat
+	
+end tell
