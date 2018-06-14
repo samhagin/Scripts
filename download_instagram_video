@@ -1,0 +1,2 @@
+# pup is a command line HTML selector/parser, you can find more information at https://github.com/ericchiang/pup
+curl <instagram post url> | pup 'meta[property="og:video"] attr{content}'
